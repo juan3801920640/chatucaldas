@@ -8,5 +8,6 @@ import com.chatUcaldas.chat_ucaldas.entity.UserChat;
 @Repository("UserChatRepository")
 public interface RepoUserChat extends CrudRepository<UserChat, Long> {
 	
+	UserChat findByUserChatAndPassword(String userChat, String password);
 
 }

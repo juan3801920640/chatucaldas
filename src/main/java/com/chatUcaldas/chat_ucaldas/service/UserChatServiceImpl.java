@@ -59,4 +59,16 @@ public class UserChatServiceImpl implements UserChatService{
 		
 	}
 
+	@Override
+	public UserChat login(String userChat, String password) {
+		
+		UserChat userChatNew = repositoryUserChat.findByUserChatAndPassword(userChat, password);
+		
+		if (userChatNew != null) {
+			return userChatNew;
+		} else {
+			throw new EntityNotFoundException("El usuario no se encuentra registrado");
+		}
+	}
+
 }

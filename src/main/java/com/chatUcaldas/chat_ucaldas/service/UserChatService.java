@@ -15,5 +15,7 @@ public interface UserChatService {
 	public abstract void deleteUserChat(Long idUserChat);
 	
 	public abstract UserChat updateUserChat(UserChat newUserChat);
+	
+	public abstract UserChat login(String userChat, String password);
 
 }

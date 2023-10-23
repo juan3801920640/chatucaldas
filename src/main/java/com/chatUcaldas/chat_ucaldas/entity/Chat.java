@@ -2,7 +2,6 @@ package com.chatUcaldas.chat_ucaldas.entity;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

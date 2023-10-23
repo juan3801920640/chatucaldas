@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.chatUcaldas.chat_ucaldas.entity.Chat;
 import com.chatUcaldas.chat_ucaldas.entity.Question;
 import com.chatUcaldas.chat_ucaldas.entity.Role;
@@ -25,7 +24,6 @@ import com.chatUcaldas.chat_ucaldas.entity.UserChat;
 import com.chatUcaldas.chat_ucaldas.service.ChatServiceImpl;
 import com.chatUcaldas.chat_ucaldas.service.QuestionServiceImpl;
 import com.chatUcaldas.chat_ucaldas.service.RoleServiceImpl;
-import com.chatUcaldas.chat_ucaldas.service.UserChatService;
 import com.chatUcaldas.chat_ucaldas.service.UserChatServiceImpl;
 
 @RestController
@@ -150,6 +148,16 @@ public class ChatController {
 		}
 	}
 	
+	@GetMapping(path="/login", produces={"application/json"})
+	@CrossOrigin(methods = { RequestMethod.GET })
+	public ResponseEntity<?> login(@RequestParam String user, @RequestParam String password) throws Exception {
+		try {
+			return new ResponseEntity<UserChat>(userChatService.login(user, password), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	//Chat -----------------------------------
 	
 	@PostMapping(path="/newChat", produces={"application/json"})
@@ -172,6 +180,18 @@ public class ChatController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping(path="/countQuestByChatById/{id}", produces={"application/json"})
+	@CrossOrigin(methods = { RequestMethod.GET })
+	public ResponseEntity<?> countQuest(@PathVariable Long id) throws Exception {
+		try {
+			return new ResponseEntity<Integer>(chatService.getChat(id).getQuestions().size(), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
 	
 	@GetMapping(path="/findAllChats", produces={"application/json"})
 	@CrossOrigin(methods = { RequestMethod.GET })
