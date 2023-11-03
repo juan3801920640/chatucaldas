@@ -18,13 +18,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.chatUcaldas.chat_ucaldas.entity.Chat;
+import com.chatUcaldas.chat_ucaldas.entity.InfoContactoPayment;
 import com.chatUcaldas.chat_ucaldas.entity.Question;
 import com.chatUcaldas.chat_ucaldas.entity.Role;
 import com.chatUcaldas.chat_ucaldas.entity.UserChat;
+import com.chatUcaldas.chat_ucaldas.entity.UserInfoContacto;
 import com.chatUcaldas.chat_ucaldas.service.ChatServiceImpl;
+import com.chatUcaldas.chat_ucaldas.service.InfoContactPaymentServiceImpl;
 import com.chatUcaldas.chat_ucaldas.service.QuestionServiceImpl;
 import com.chatUcaldas.chat_ucaldas.service.RoleServiceImpl;
 import com.chatUcaldas.chat_ucaldas.service.UserChatServiceImpl;
+import com.chatUcaldas.chat_ucaldas.service.UserInfoContactoServiceImpl;
 
 @RestController
 @RequestMapping("/chat-ucaldas")
@@ -46,6 +50,14 @@ public class ChatController {
 	@Autowired
 	@Qualifier("QuestionServiceImpl")
 	private QuestionServiceImpl questionService;
+	
+	@Autowired
+	@Qualifier("InfoContactPaymentServiceImpl")
+	private InfoContactPaymentServiceImpl infoContactPaymService;
+	
+	@Autowired
+	@Qualifier("UserInfoContactoServiceImpl")
+	private UserInfoContactoServiceImpl userInfoContService;
 	
 	
 	//Roles -----------------------------------
@@ -226,4 +238,27 @@ public class ChatController {
 		}
 	}
 	
+	//Info_contacto_payment ---------------------------------
+	
+	@PostMapping(path="/newInfoContactPayment", produces={"application/json"})
+	@CrossOrigin(methods= { RequestMethod.POST })
+	public ResponseEntity<?> newInfoContactPayment(@RequestBody InfoContactoPayment infoContactoPayment) throws Exception {
+		try {
+			return new ResponseEntity<InfoContactoPayment>(infoContactPaymService.addInfoContPayment(infoContactoPayment), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	//UserInfoContacto ---------------------------------
+	@PostMapping(path="/newUserInfoContacto", produces={"application/json"})
+	@CrossOrigin(methods= { RequestMethod.POST })
+	public ResponseEntity<?> newUserInfoContacto(@RequestBody UserInfoContacto userInfoContacto) throws Exception {
+		try {
+			return new ResponseEntity<UserInfoContacto>(userInfoContService.addUserInfoContacto(userInfoContacto), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+		
 }
