@@ -6,8 +6,8 @@ import com.chatUcaldas.chat_ucaldas.entity.Question;
 
 public interface QuestionService {
 	
-	public abstract Question addQuestion(Question question);
+	public Question addQuestion(Question question);
 	
-	public abstract List<Question> getAllQuestions();
+	public List<Question> getAllQuestions();
 
 }

@@ -4,6 +4,6 @@ import com.chatUcaldas.chat_ucaldas.entity.UserInfoContacto;
 
 public interface UserInfoContactoService {
 	
-	public abstract UserInfoContacto addUserInfoContacto(UserInfoContacto userInfoContacto);
+	public UserInfoContacto addUserInfoContacto(UserInfoContacto userInfoContacto);
 
 }

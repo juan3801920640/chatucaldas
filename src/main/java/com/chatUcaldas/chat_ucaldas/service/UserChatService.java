@@ -6,16 +6,16 @@ import com.chatUcaldas.chat_ucaldas.entity.UserChat;
 
 public interface UserChatService {
 	
-	public abstract UserChat addUserChat(UserChat userChat);
+	public UserChat addUserChat(UserChat userChat);
 	
-	public abstract UserChat getUserChat(Long idUserChat);
+	public UserChat getUserChat(Long idUserChat);
 	
-	public abstract List<UserChat> getAllUserChat();
+	public List<UserChat> getAllUserChat();
 	
-	public abstract void deleteUserChat(Long idUserChat);
+	public void deleteUserChat(Long idUserChat);
 	
-	public abstract UserChat updateUserChat(UserChat newUserChat);
+	public UserChat updateUserChat(UserChat newUserChat);
 	
-	public abstract UserChat login(String userChat, String password);
+	public UserChat login(String userChat, String password);
 
 }

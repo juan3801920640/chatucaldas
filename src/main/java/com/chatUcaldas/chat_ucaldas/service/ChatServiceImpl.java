@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import com.chatUcaldas.chat_ucaldas.entity.Chat;
 import com.chatUcaldas.chat_ucaldas.repository.RepoChat;
 
@@ -32,6 +31,11 @@ public class ChatServiceImpl implements ChatService{
 	@Override
 	public List<Chat> getAllChats() {
 		return (List<Chat>) repositoryChat.findAll();
+	}
+
+	@Override
+	public List<Chat> getChatByUserChatId(Long userChatId) {
+		return repositoryChat.findByUserChatId(userChatId);
 	}
 	
 	

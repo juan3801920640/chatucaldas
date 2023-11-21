@@ -6,10 +6,10 @@ import com.chatUcaldas.chat_ucaldas.entity.Role;
 
 public interface RoleService {
 	
-	public abstract Role addRole(Role role);
+	public Role addRole(Role role);
 	
-	public abstract Role getRole(Long id);
+	public Role getRole(Long id);
 	
-	public abstract List<Role> getAllRoles();
+	public List<Role> getAllRoles();
 
 }

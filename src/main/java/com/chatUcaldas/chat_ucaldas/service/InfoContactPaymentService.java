@@ -4,6 +4,6 @@ import com.chatUcaldas.chat_ucaldas.entity.InfoContactoPayment;
 
 public interface InfoContactPaymentService {
 	
-	public abstract InfoContactoPayment addInfoContPayment (InfoContactoPayment infoContactoPayment);
+	public InfoContactoPayment addInfoContPayment (InfoContactoPayment infoContactoPayment);
 
 }

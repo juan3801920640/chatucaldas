@@ -6,10 +6,13 @@ import com.chatUcaldas.chat_ucaldas.entity.Chat;
 
 public interface ChatService {
 	
-	public abstract Chat addChat(Chat chat);
+	public Chat addChat(Chat chat);
 	
-	public abstract Chat getChat(Long id);
+	public Chat getChat(Long id);
 	
-	public abstract List<Chat> getAllChats();
+	public List<Chat> getChatByUserChatId(Long userChatId);
+	
+	public List<Chat> getAllChats();
+	
 
 }
